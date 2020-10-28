@@ -339,7 +339,7 @@ subList :: Int -> Int -> [a] -> [a]
 subList start end list
     | start < 0 || end < 0 = []
     | start > end = []
-    | otherwise = reverse (take start (reverse (take (end + 1) list)))
+    | otherwise = take (end - start + 1) (drop start list)
 
 {- |
 =⚔️= Task 4
@@ -856,6 +856,7 @@ list.
 🕯 HINT: Use the 'cycle' function
 -}
 rotate :: Int -> [a] -> [a]
+rotate _ [] = []
 rotate r l
     | r < 0 = []
     | otherwise = drop r (take (r + (length l)) (cycle l))
@@ -874,7 +875,13 @@ and reverses it.
   function, but in this task, you need to implement it manually. No
   cheating!
 -}
-rewind = error "rewind: Not Implemented!"
+rewind :: [a] -> [a]
+rewind [] = []
+rewind l = re [] l
+  where
+    re :: [b] -> [b] -> [b]
+    re rewinded [] = rewinded
+    re rewinded (x:xs) = re (x : rewinded) xs
 
 
 {-
