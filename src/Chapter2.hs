@@ -336,7 +336,10 @@ from it!
 ghci> :l src/Chapter2.hs
 -}
 subList :: Int -> Int -> [a] -> [a]
-subList = error "subList: Not implemented!"
+subList start end list
+    | start < 0 || end < 0 = []
+    | start > end = []
+    | otherwise = reverse (take start (reverse (take (end + 1) list)))
 
 {- |
 =⚔️= Task 4
