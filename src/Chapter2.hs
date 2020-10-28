@@ -855,7 +855,10 @@ list.
 
 🕯 HINT: Use the 'cycle' function
 -}
-rotate = error "rotate: Not implemented!"
+rotate :: Int -> [a] -> [a]
+rotate r l
+    | r < 0 = []
+    | otherwise = drop r (take (r + (length l)) (cycle l))
 
 {- |
 =💣= Task 12*
