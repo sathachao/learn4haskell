@@ -1135,28 +1135,6 @@ Implement data types and typeclasses, describing such a battle between two
 contestants, and write a function that decides the outcome of a fight!
 -}
 
-class Fighter a where
-    takeHit :: a -> Int -> a
-    isDead :: a -> Bool
-
-data KnightAction
-    = KnightAttack Int
-    | KnightHeal Int
-    | KnightCastDefenseSpell Int
-
-data MonsterAction
-    = MonsterAttack Int
-
-
-
-data Knight = Knight
-    { knightActions :: [KnightAction]
-    , 
-    }
-
-fight :: (Fighter a) => a -> a -> a
-
-
 {-
 You did it! Now it is time to open pull request with your changes
 and summon @vrom911 and @chshersh for the review!
